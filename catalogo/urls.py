@@ -9,6 +9,7 @@ from .views.cliente_view import ClienteViewSet
 from .views.reserva_view import ReservaViewSet
 from .views.mesa_view import MesaViewSet
 from .views.venta_view import VentaViewSet
+from .views.detalleMenu_view import DetalleMenuViewSet
 
 router = routers.DefaultRouter()
 router.register(r'categorias', CategoriaViewSet)
@@ -19,6 +20,7 @@ router.register(r'clientes', ClienteViewSet)
 router.register(r'reservas', ReservaViewSet)
 router.register(r'mesas', MesaViewSet)
 router.register(r'ventas', VentaViewSet)
+router.register(r'detalleMenus', DetalleMenuViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
