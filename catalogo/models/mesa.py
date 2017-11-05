@@ -6,7 +6,7 @@ class Mesa(models.Model):
     piso = models.CharField(max_length=100)
     maxPersonas = models.CharField(max_length=60)
     numMesa = models.CharField(max_length=60)
-    libre = models.CharField(max_length=4)
+    libre = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = "Mesa"

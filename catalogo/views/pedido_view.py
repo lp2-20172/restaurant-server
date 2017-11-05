@@ -13,4 +13,3 @@ class PedidoSerializer(serializers.ModelSerializer):
 class PedidoViewSet(viewsets.ModelViewSet):
     queryset = Pedido.objects.all()
     serializer_class = PedidoSerializer
-

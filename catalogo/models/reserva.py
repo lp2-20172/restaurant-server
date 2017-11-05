@@ -7,7 +7,7 @@ class Reserva(models.Model):
 
     cliente = models.ForeignKey(Cliente)
     mesa = models.ForeignKey(Mesa)
-    finalizada = models.CharField(max_length=2)
+    finalizada = models.BooleanField(default=False)
     fecha = models.DateTimeField(blank=True, null=True)
 
     class Meta:
