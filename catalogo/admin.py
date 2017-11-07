@@ -89,9 +89,9 @@ admin.site.register(Venta, VentaAdmin)
 
 class PedidoAdmin(admin.ModelAdmin):
 
-    list_display = ("fecha", "pagado", "confirmado", "servido",
+    list_display = ("fecha", "confirmado", "servido",
                     "cliente_nombre", "mesa_numMesa", "menu_nombre")
-    search_fields = ("fecha", "pagado", "confirmado", "servido",)
+    search_fields = ("fecha", "confirmado", "servido",)
 
     def cliente_nombre(self, obj):
         return obj.cliente.nombre
