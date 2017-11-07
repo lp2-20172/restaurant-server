@@ -49,12 +49,12 @@ admin.site.register(Mesa, MesaAdmin)
 class detalleMenuAdmin(admin.ModelAdmin):
 
     list_display = ("cantidad", "precioUni",
-                    "menu_nombre",)
+                    "Menu_nombre",)
 
     search_fields = ("cantidad", "precioUni",)
 
-    def menu_nombre(self, obj):
-        return obj.menu.nombre
+    def Menu_nombre(self, obj):
+        return obj.Menu.nombre
 
 
 admin.site.register(DetalleMenu, detalleMenuAdmin)
@@ -72,17 +72,20 @@ admin.site.register(Menu, MenuAdmin)
 
 class VentaAdmin(admin.ModelAdmin):
 
-    list_display = ("cantidad", "nombre", "precioTotal", "servida",
-                    "pagado", "Menu_nombre", "Producto_nombre",)
+    list_display = ("cantidad", "precioTotal",
+                    "pagado", "Menu_nombre", "Producto_nombre", "Pedido_confirmado")
 
-    search_fields = ("cantidad", "nombre", "precioTotal",
-                     "servida", "pagado",)
+    search_fields = ("cantidad", "precioTotal",
+                      "pagado",)
 
     def Menu_nombre(self, obj):
         return obj.Menu.nombre
 
     def Producto_nombre(self, obj):
         return obj.Producto.nombre
+
+    def Pedido_confirmado(self, obj):
+        return obj.Pedido.confirmado
 
 admin.site.register(Venta, VentaAdmin)
 
