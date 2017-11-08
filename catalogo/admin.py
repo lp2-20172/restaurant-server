@@ -62,9 +62,9 @@ admin.site.register(DetalleMenu, detalleMenuAdmin)
 
 class MenuAdmin(admin.ModelAdmin):
 
-    list_display = ("nombre", "precio")
+    list_display = ("nombre", "precio", "imagen")
 
-    search_fields = ("nombre", "precio",)
+    search_fields = ("nombre", "precio", "imagen")
 
 
 admin.site.register(Menu, MenuAdmin)
