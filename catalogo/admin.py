@@ -1,12 +1,12 @@
 from django.contrib import admin
 from .models.producto import Producto
 from .models.reserva import Reserva
-from .models.venta import Venta
 from .models.cliente import Cliente
 from .models.mesa import Mesa
 from .models.pedido import Pedido
 from .models.menu import Menu
-from .models.detalleMenu import DetalleMenu
+from .models.venta import Venta
+from .models.detalleVenta import DetalleVenta
 
 # Register your models here.
 
@@ -46,37 +46,20 @@ class MesaAdmin(admin.ModelAdmin):
 admin.site.register(Mesa, MesaAdmin)
 
 
-class detalleMenuAdmin(admin.ModelAdmin):
-
-    list_display = ("cantidad", "precioUni",
-                    "Menu_nombre",)
-
-    search_fields = ("cantidad", "precioUni",)
-
-    def Menu_nombre(self, obj):
-        return obj.Menu.nombre
-
-
-admin.site.register(DetalleMenu, detalleMenuAdmin)
-
-
 class MenuAdmin(admin.ModelAdmin):
 
     list_display = ("nombre", "precio", "imagen")
 
     search_fields = ("nombre", "precio", "imagen")
 
-
 admin.site.register(Menu, MenuAdmin)
 
+class detalleVentaAdmin(admin.ModelAdmin):
 
-class VentaAdmin(admin.ModelAdmin):
+    list_display = ("cantidad", "precioUni", "precioTotal",
+                    "Menu_nombre", "Producto_nombre",)
 
-    list_display = ("cantidad", "precioTotal",
-                    "pagado", "Menu_nombre", "Producto_nombre", "Pedido_confirmado")
-
-    search_fields = ("cantidad", "precioTotal",
-                      "pagado",)
+    search_fields = ("cantidad", "precioUni", "precioTotal",)
 
     def Menu_nombre(self, obj):
         return obj.Menu.nombre
@@ -84,10 +67,25 @@ class VentaAdmin(admin.ModelAdmin):
     def Producto_nombre(self, obj):
         return obj.Producto.nombre
 
+admin.site.register(DetalleVenta, detalleVentaAdmin)
+
+
+class VentaAdmin(admin.ModelAdmin):
+
+    list_display = ("precioTotal", "fecha",
+                    "Pedido_confirmado", "Cliente_nombre")
+
+    search_fields = ("precioTotal", "fecha",)
+
+
+    def Cliente_nombre(self, obj):
+        return obj.Cliente.nombre
+
     def Pedido_confirmado(self, obj):
         return obj.Pedido.confirmado
 
 admin.site.register(Venta, VentaAdmin)
+
 
 
 class PedidoAdmin(admin.ModelAdmin):
