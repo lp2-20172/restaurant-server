@@ -2,7 +2,6 @@ from ..models.menu import Menu
 from rest_framework import serializers, viewsets
 from rest_framework import permissions
 
-
 class MenuSerializer(serializers.ModelSerializer):
     # campo_nuevo = serializers.SerializerMethodField()
 
